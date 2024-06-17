@@ -7,6 +7,8 @@ import { PolicyModule } from './policy/policy.module';
 import { CaslModule } from './casl/casl.module';
 import { JwtStrategy } from './auth/jwt.strategy';
 import { PoliciesGuard } from './casl/policies.guard';
+import { ProfileModule } from './profile/profile.module';
+import { CurrentUserInterceptor } from './interseptor/auth.inceptors';
 
 @Module({
   imports: [
@@ -15,10 +17,11 @@ import { PoliciesGuard } from './casl/policies.guard';
     RoleModule,
     PolicyModule,
     UserModule,
-    CaslModule, 
+    CaslModule,
+    ProfileModule, 
   ],
   controllers: [],
-  providers: [JwtStrategy, PoliciesGuard],
+  providers: [JwtStrategy, PoliciesGuard,CurrentUserInterceptor],
   exports: [],
 })
 export class AppModule {}
