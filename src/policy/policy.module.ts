@@ -9,5 +9,6 @@ import { Policy, PolicySchema } from './entities/policy.entity';
 
   controllers: [PolicyController],
   providers: [PolicyService],
+  exports:[MongooseModule]
 })
 export class PolicyModule {}

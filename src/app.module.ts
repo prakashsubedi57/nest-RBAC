@@ -9,6 +9,7 @@ import { JwtStrategy } from './auth/jwt.strategy';
 import { PoliciesGuard } from './casl/policies.guard';
 import { ProfileModule } from './profile/profile.module';
 import { CurrentUserInterceptor } from './interseptor/auth.inceptors';
+import { PolicySeeder } from './policy/entities/policy.seeder';
 
 @Module({
   imports: [
@@ -18,10 +19,15 @@ import { CurrentUserInterceptor } from './interseptor/auth.inceptors';
     PolicyModule,
     UserModule,
     CaslModule,
-    ProfileModule, 
+    ProfileModule,
   ],
   controllers: [],
-  providers: [JwtStrategy, PoliciesGuard,CurrentUserInterceptor],
+  providers: [JwtStrategy, PoliciesGuard, CurrentUserInterceptor,PolicySeeder
+  ],
   exports: [],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private readonly policySeeder: PolicySeeder) {
+    this.policySeeder.seed();
+  }
+}
