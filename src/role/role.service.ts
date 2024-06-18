@@ -30,11 +30,11 @@ export class RoleService {
       }
       // return policy;
 
-      policy.MANAGE = updateRolePolicyDto.MANAGE ;
-      policy.CREATE = updateRolePolicyDto.CREATE ;
-      policy.READ = updateRolePolicyDto.READ ;
-      policy.UPDATE = updateRolePolicyDto.UPDATE ;
-      policy.DELETE = updateRolePolicyDto.DELETE ;
+      policy.MANAGE = updateRolePolicyDto.MANAGE;
+      policy.CREATE = updateRolePolicyDto.CREATE;
+      policy.READ = updateRolePolicyDto.READ;
+      policy.UPDATE = updateRolePolicyDto.UPDATE;
+      policy.DELETE = updateRolePolicyDto.DELETE;
 
       role.save();
       return role;
@@ -45,5 +45,9 @@ export class RoleService {
 
   getRoles() {
     return this.roleModel.find().populate('policies.policyId').exec();
+  }
+
+  async findRoleByName(name: string): Promise<Role> {
+    return this.roleModel.findOne({ name }).exec();
   }
 }

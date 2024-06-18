@@ -29,8 +29,12 @@ export class PoliciesGuard implements CanActivate {
       throw new ForbiddenException('User not found');
     }
 
-    if (!user.role) {
+    if (!thisuser.role) {
       throw new ForbiddenException('User does not have a role assigned');
+    }
+
+    if (thisuser.role.name === 'superuser') {
+      return true;
     }
 
     let hasAccess = false;

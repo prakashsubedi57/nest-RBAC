@@ -22,8 +22,7 @@ import { PolicySeeder } from './policy/entities/policy.seeder';
     ProfileModule,
   ],
   controllers: [],
-  providers: [JwtStrategy, PoliciesGuard, CurrentUserInterceptor,PolicySeeder
-  ],
+  providers: [JwtStrategy, PoliciesGuard, CurrentUserInterceptor,PolicySeeder],
   exports: [],
 })
 export class AppModule {
